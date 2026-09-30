@@ -28,7 +28,7 @@ var PLANOS = {
       'Não inclui o aplicativo'
     ],
 
-    pay: ''               // <- cole aqui o link de pagamento do Plano Básico
+    pay: 'https://pay.cakto.com.br/exfs9jn_1153810'   // Cakto · Básico R$ 14,90
   },
 
   premium: {
@@ -51,7 +51,7 @@ var PLANOS = {
       'Envio imediato por e-mail (aplicativo + PDF)'
     ],
 
-    pay: ''               // <- cole aqui o link de pagamento do Premium Completo
+    pay: 'https://pay.cakto.com.br/347pjfb_1153873'   // Cakto · Premium Completo R$ 37,90
   },
 
   /* Premium Essencial: só aparece no DOWNSELL, quando o cliente do Básico
@@ -61,7 +61,7 @@ var PLANOS = {
     nome: 'Premium Essencial',
     desc: 'Aplicativo vitalício + material para imprimir. Sem os 2 bônus.',
     img: 'img/capa-plano-premium.webp',
-    preco: 2490,          // R$ 24,90  <- SUGESTÃO: confirme o valor
+    preco: 2490,          // R$ 24,90 (confirmado; confere com a Cakto)
     de: 3790,             // riscado = preço do Premium Completo
     parcelas: null,
     oculto: true,         // não aparece na escolha de planos
@@ -75,7 +75,7 @@ var PLANOS = {
       'Não inclui: Guia Rápido para os Pais e Plano Semanal de Matemática'
     ],
 
-    pay: ''               // <- cole aqui o link de pagamento do Premium Essencial
+    pay: 'https://pay.cakto.com.br/3eyqzi3_1158177'   // Cakto · Premium Essencial R$ 24,90
   }
 
 };
@@ -190,7 +190,8 @@ var BUMPS = [
       mascara: function (v) { return mascaraTelefone(v); }
     },
     {
-      id: 'f-cpf', box: 'campo-cpf', chave: 'cpf',
+      /* testado na Cakto: o CPF só chega preenchido com o nome "document" */
+      id: 'f-cpf', box: 'campo-cpf', chave: 'document',
       valida: function (v) { return cpfValido(v); },
       /* a Cakto espera so os digitos, sem ponto nem traco */
       formata: function (v) { return v.replace(/\D/g, ''); },
@@ -286,7 +287,7 @@ var BUMPS = [
   function guardar() {
     var dados = {};
     /* CPF nunca é guardado no navegador (o texto de ajuda do campo promete isso) */
-    CAMPOS.forEach(function (c) { if (c.chave !== 'cpf') { dados[c.chave] = el(c.id).value; } });
+    CAMPOS.forEach(function (c) { if (c.id !== 'f-cpf') { dados[c.chave] = el(c.id).value; } });
     try { localStorage.setItem(GUARDA, JSON.stringify(dados)); }
     catch (e) { /* navegacao privada ou storage cheio: segue sem guardar */ }
   }
@@ -296,7 +297,7 @@ var BUMPS = [
     try { dados = JSON.parse(localStorage.getItem(GUARDA)) || {}; }
     catch (e) { dados = {}; }
     CAMPOS.forEach(function (c) {
-      if (c.chave !== 'cpf' && typeof dados[c.chave] === 'string') { el(c.id).value = dados[c.chave]; }
+      if (c.id !== 'f-cpf' && typeof dados[c.chave] === 'string') { el(c.id).value = dados[c.chave]; }
     });
   }
 
