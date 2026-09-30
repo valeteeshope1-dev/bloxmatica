@@ -1,0 +1,15 @@
+# Imagens-fonte (PNG) da raiz: o site usa as versões otimizadas em img/
+/*.png
+/*.PNG
+
+# PDF original da amostra (o site usa downloads/amostra-gratis-bloxmatica.pdf)
+/Amostra-Gratis-Bloxmatica.pdf
+
+# Cópia da página antiga (com scripts de rastreamento de terceiros)
+/_original/
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+.vercel

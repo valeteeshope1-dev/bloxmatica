@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Checkout — Bloxmática</title>
+<link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+<!-- ---------------- cronômetro da oferta: mesmo da página de vendas (até a meia-noite) ---------------- -->
+<div class="timer-bar" role="timer" aria-live="off">
+  <span class="timer-txt">Oferta termina hoje</span>
+  <span class="timer" id="timer">--:--:--</span>
+</div>
+
+<!-- ---------------- cabeçalho: garantia ---------------- -->
+<header class="topo-garantia">
+  <div class="wrap">
+    <svg class="selo-risco" viewBox="-10 0 260 244" role="img" aria-label="Selo Risco Zero: satisfação garantida, 7 dias de garantia">
+      <defs>
+        <linearGradient id="rzOuro" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#fff1b8"/><stop offset=".22" stop-color="#f3cf62"/>
+          <stop offset=".5" stop-color="#c8922a"/><stop offset=".75" stop-color="#f0c95a"/>
+          <stop offset="1" stop-color="#9c6a18"/>
+        </linearGradient>
+        <linearGradient id="rzOuroTexto" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff3c4"/><stop offset=".45" stop-color="#f5d06a"/><stop offset="1" stop-color="#c28a22"/>
+        </linearGradient>
+        <radialGradient id="rzPreto" cx=".5" cy=".35" r=".7">
+          <stop offset="0" stop-color="#3a3a3a"/><stop offset="1" stop-color="#0c0c0c"/>
+        </radialGradient>
+        <linearGradient id="rzVermelho" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f0404a"/><stop offset=".55" stop-color="#cf1621"/><stop offset="1" stop-color="#9e0d16"/>
+        </linearGradient>
+        <radialGradient id="rzBrilho" cx=".35" cy=".2" r=".6">
+          <stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </radialGradient>
+        <path id="rzArco" d="M27,120 A93,93 0 0 1 213,120"/>
+        <path id="rzFaixa" d="M22,193 Q120,177 218,193"/>
+      </defs>
+
+      <!-- borda serrilhada -->
+      <polygon points="120.0,3.0 127.1,12.2 135.3,4.0 141.1,14.1 150.3,7.0 154.7,17.7 164.8,11.9 167.8,23.1 178.5,18.7 180.0,30.2 191.2,27.2 191.2,38.8 202.7,37.3 201.2,48.8 212.8,48.8 209.8,60.0 221.3,61.5 216.9,72.2 228.1,75.2 222.3,85.3 233.0,89.7 225.9,98.9 236.0,104.7 227.8,112.9 237.0,120.0 227.8,127.1 236.0,135.3 225.9,141.1 233.0,150.3 222.3,154.7 228.1,164.8 216.9,167.8 221.3,178.5 209.8,180.0 212.8,191.2 201.2,191.2 202.7,202.7 191.2,201.2 191.2,212.8 180.0,209.8 178.5,221.3 167.8,216.9 164.8,228.1 154.7,222.3 150.3,233.0 141.1,225.9 135.3,236.0 127.1,227.8 120.0,237.0 112.9,227.8 104.7,236.0 98.9,225.9 89.7,233.0 85.3,222.3 75.2,228.1 72.2,216.9 61.5,221.3 60.0,209.8 48.8,212.8 48.8,201.2 37.3,202.7 38.8,191.2 27.2,191.2 30.2,180.0 18.7,178.5 23.1,167.8 11.9,164.8 17.7,154.7 7.0,150.3 14.1,141.1 4.0,135.3 12.2,127.1 3.0,120.0 12.2,112.9 4.0,104.7 14.1,98.9 7.0,89.7 17.7,85.3 11.9,75.2 23.1,72.2 18.7,61.5 30.2,60.0 27.2,48.8 38.8,48.8 37.3,37.3 48.8,38.8 48.8,27.2 60.0,30.2 61.5,18.7 72.2,23.1 75.2,11.9 85.3,17.7 89.7,7.0 98.9,14.1 104.7,4.0 112.9,12.2" fill="url(#rzOuro)" stroke="#8a5c12" stroke-width="1"/>
+      <!-- anel dourado com o texto -->
+      <circle cx="120" cy="120" r="104" fill="url(#rzOuro)" stroke="#8a5c12" stroke-width="1.2"/>
+      <circle cx="120" cy="120" r="101" fill="none" stroke="#fff3c4" stroke-width="1" opacity=".7"/>
+      <text class="rz-arco"><textPath href="#rzArco" startOffset="50%" text-anchor="middle">SATISFAÇÃO GARANTIDA</textPath></text>
+      <!-- centro preto -->
+      <circle cx="120" cy="120" r="80" fill="url(#rzPreto)" stroke="#f3cf62" stroke-width="3.5"/>
+      <circle cx="120" cy="120" r="73" fill="none" stroke="#f3cf62" stroke-width="1" stroke-dasharray="2 3" opacity=".7"/>
+      <polygon class="rz-star" points="120.0,59.0 121.7,63.6 126.7,63.8 122.8,66.9 124.1,71.7 120.0,68.9 115.9,71.7 117.2,66.9 113.3,63.8 118.3,63.6"/><polygon class="rz-star" points="96.0,67.5 97.1,70.5 100.3,70.6 97.8,72.6 98.6,75.6 96.0,73.9 93.4,75.6 94.2,72.6 91.7,70.6 94.9,70.5"/><polygon class="rz-star" points="144.0,67.5 145.1,70.5 148.3,70.6 145.8,72.6 146.6,75.6 144.0,73.9 141.4,75.6 142.2,72.6 139.7,70.6 142.9,70.5"/>
+      <text class="rz-grande" x="120" y="116" text-anchor="middle">RISCO</text>
+      <text class="rz-grande" x="120" y="154" text-anchor="middle">ZERO</text>
+      <!-- brilho -->
+      <ellipse cx="98" cy="62" rx="70" ry="42" fill="url(#rzBrilho)" opacity=".45"/>
+
+      <!-- faixa vermelha -->
+      <polygon points="-8,182 24,182 24,212 -8,212 4,197" fill="#8a0b13"/>
+      <polygon points="248,182 216,182 216,212 248,212 236,197" fill="#8a0b13"/>
+      <polygon points="24,212 24,203 36,208" fill="#5e070d"/>
+      <polygon points="216,212 216,203 204,208" fill="#5e070d"/>
+      <path d="M14,176 Q120,158 226,176 L226,206 Q120,188 14,206 Z" fill="url(#rzVermelho)" stroke="#f3cf62" stroke-width="2"/>
+      <path d="M18,181 Q120,163 222,181" fill="none" stroke="#fff" stroke-width="1" opacity=".35"/>
+      <text class="rz-faixa"><textPath href="#rzFaixa" startOffset="50%" text-anchor="middle">7 DIAS DE GARANTIA</textPath></text>
+    </svg>
+    <div>
+      <p class="topo-titulo">Garantia de 7 dias</p>
+      <p class="topo-sub">Se você não ficar satisfeito, devolvemos 100% do seu dinheiro.</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="passos">
+    <span class="passo on"><span class="n">1</span> Seu pedido</span>
+    <span class="sep"></span>
+    <span class="passo"><span class="n">2</span> Pagamento</span>
+    <span class="sep"></span>
+    <span class="passo"><span class="n">3</span> Acesso no e-mail</span>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+
+  <h1>Confirme seu pedido</h1>
+
+  <!-- avisa quando o link de pagamento ainda nao foi colado em checkout.js -->
+  <div class="aviso" id="aviso" role="alert">
+    <strong>Configuração pendente:</strong> o link de pagamento do
+    <strong id="aviso-plano">plano</strong> ainda não foi cadastrado.
+    Abra <code>js/checkout.js</code> e cole o link de pagamento no campo <code>pay</code> desse plano.
+    <em>Este aviso só aparece para você — mas o botão fica desativado para todo mundo até o link ser colado.</em>
+  </div>
+
+  <!-- ---------------- carrinho ---------------- -->
+  <section class="bloco">
+    <h2>Seu carrinho</h2>
+    <div class="item">
+      <span class="thumb"><img id="item-img" src="" alt=""></span>
+      <div>
+        <p class="nome" id="item-nome"></p>
+        <p class="desc" id="item-desc"></p>
+      </div>
+      <span class="val">
+        <span class="de" id="item-de" hidden></span>
+        <span class="preco" id="item-preco"></span>
+      </span>
+    </div>
+  </section>
+
+
+  <!-- ---------------- escolha do plano ---------------- -->
+  <section class="bloco">
+    <h2>Escolha o seu plano</h2>
+    <div class="planos" id="planos" role="radiogroup" aria-label="Escolha o seu plano"></div>
+  </section>
+
+  <!-- ---------------- order bumps (configurados em js/checkout.js, lista BUMPS) ---------------- -->
+  <!-- REGRA: os order bumps SEMPRE começam abertos ao entrar no checkout.
+       O cliente pode recolher pela seta, mas isso nunca é lembrado entre visitas. -->
+  <section class="bloco bumps-bloco" id="bumps-bloco">
+    <div class="bumps-head">
+      <h2>🔥 Achamos que pode gostar disso também</h2>
+      <button type="button" class="bumps-toggle" id="bumps-toggle" aria-expanded="true" aria-controls="bumps-conteudo" aria-label="Recolher ofertas">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+      </button>
+    </div>
+    <div class="bumps-conteudo" id="bumps-conteudo">
+      <p class="bumps-sub">Ofertas exclusivas para quem está finalizando o pedido agora. Marque para adicionar.</p>
+      <div class="bumps" id="bumps"></div>
+    </div>
+  </section>
+
+  <!-- ---------------- ambiente seguro ---------------- -->
+  <p class="ambiente-seguro">
+    <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M144 144v48h160v-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192v-48C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64v192c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64h16z"/></svg>
+    Ambiente seguro
+  </p>
+
+  <!-- ---------------- identificacao ---------------- -->
+  <section class="bloco">
+    <h2>Identificação</h2>
+    <div class="campos">
+      <div class="campo" id="campo-email">
+        <label for="f-email">E-mail</label>
+        <input type="email" id="f-email" autocomplete="email" inputmode="email"
+               spellcheck="false" placeholder="seuemail@exemplo.com" aria-describedby="ajuda-email">
+        <p class="ajuda" id="ajuda-email">📩 Seu acesso é enviado para este e-mail. Confira se está escrito corretamente para receber o material sem problemas.</p>
+        <p class="erro">Digite um e-mail válido — é nele que o seu acesso chega.</p>
+      </div>
+      <div class="campo" id="campo-nome">
+        <label for="f-nome">Nome completo</label>
+        <input type="text" id="f-nome" autocomplete="name" placeholder="Nome e sobrenome">
+        <p class="erro">Informe o nome e o sobrenome.</p>
+      </div>
+      <div class="dupla">
+        <div class="campo" id="campo-fone">
+          <label for="f-fone">WhatsApp</label>
+          <input type="tel" id="f-fone" autocomplete="tel" inputmode="numeric"
+                 maxlength="15" placeholder="DDD + número" aria-describedby="ajuda-fone">
+          <p class="ajuda" id="ajuda-fone">💬 Usamos o WhatsApp para te ajudar com o pedido e tirar dúvidas. Preencha corretamente para um atendimento mais rápido.</p>
+          <p class="erro">Informe DDD + número (10 ou 11 dígitos).</p>
+        </div>
+        <div class="campo" id="campo-cpf">
+          <label for="f-cpf">CPF</label>
+          <input type="text" id="f-cpf" inputmode="numeric" autocomplete="off"
+                 maxlength="14" placeholder="000.000.000-00" aria-describedby="ajuda-cpf">
+          <p class="ajuda" id="ajuda-cpf">🔒 Necessário para processar o pagamento com segurança. Não guardamos esse dado neste site.</p>
+          <p class="erro">Informe um CPF válido.</p>
+        </div>
+      </div>
+    </div>
+    <p class="dica">Esses dados vão preenchidos para o pagamento — você não digita tudo de novo.</p>
+
+    <!-- Atalho ate o botao de compra: entre este ponto e o final da pagina ha
+         depoimentos, o resumo e a garantia, e nem todo mundo rola ate la.
+         Se algum campo estiver vazio ou errado, o botao aponta o campo em vez
+         de descer. -->
+    <button type="button" class="descer" id="descer">
+      Continuar para o pagamento
+      <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.7 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+    </button>
+  </section>
+
+  <!-- ---------------- o que esta incluso ---------------- -->
+  <section class="bloco">
+    <h2>O que está incluso</h2>
+    <ul class="inclui" id="inclui"></ul>
+  </section>
+
+  <!-- ---------------- resumo + pagamento ---------------- -->
+  <section class="bloco">
+    <h2>Resumo</h2>
+    <div class="resumo-linha">
+      <span id="sub-nome"></span>
+      <span id="sub-valor"></span>
+    </div>
+    <div id="resumo-bumps"></div>
+    <div class="resumo-total">
+      <span class="rot">Total</span>
+      <span class="v" id="total"></span>
+    </div>
+    <p class="parcelado" id="parcelado"></p>
+  </section>
+
+  <section class="bloco">
+    <h2>Formas de pagamento</h2>
+    <!-- Pix primeiro e em destaque: e o meio com aprovacao imediata, entao
+         e o que leva o cliente ao material mais rapido. -->
+    <div class="formas">
+      <span class="forma principal">
+        <svg class="pix" viewBox="0 0 48 48" aria-hidden="true"><g fill="#32BCAD" stroke="#32BCAD" stroke-width="3" stroke-linejoin="round"><path d="M24 5 32 13 24 21 16 13Z"/><path d="M43 24 35 32 27 24 35 16Z"/><path d="M24 43 16 35 24 27 32 35Z"/><path d="M5 24 13 16 21 24 13 32Z"/></g></svg>
+        <span class="rot">Pix<b>Aprovação imediata</b></span>
+      </span>
+      <span class="forma">
+        <svg class="card" viewBox="0 0 576 512" aria-hidden="true"><path d="M64 32C28.7 32 0 60.7 0 96v32h576V96c0-35.3-28.7-64-64-64H64zM576 224H0v192c0 35.3 28.7 64 64 64h448c35.3 0 64-28.7 64-64V224zM112 352h64c8.8 0 16 7.2 16 16s-7.2 16-16 16h-64c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
+        <span class="rot">Cartão de crédito</span>
+      </span>
+    </div>
+    <p class="nota">Os dados de pagamento são preenchidos no ambiente seguro da próxima etapa. Nenhum dado de cartão passa por este site.</p>
+  </section>
+
+  <!-- ---------------- garantia ---------------- -->
+  <div class="garantia">
+    <svg viewBox="0 0 512 512" aria-hidden="true"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2-.5 99.2-41.3 280.7-213.6 363.2-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140 15.9 113.8 32.3 92.1 54.3 82.8L242.7 2.9C246.8 1 251.4 0 256 0z"/></svg>
+    <p><strong>7 dias de garantia incondicional.</strong> Se não fizer sentido para você, devolvemos o valor integral. Sem burocracia e sem explicação obrigatória.</p>
+  </div>
+
+  <a class="cta" id="cta" href="#" rel="noopener">IR PARA O PAGAMENTO SEGURO</a>
+  <p class="pos-cta">Você será levado ao <strong>ambiente seguro de pagamento</strong> para concluir a compra.<br>Após a confirmação, o acesso chega no seu e-mail.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Bloxmática</strong> — aventuras de matemática para o 1º ao 5º ano.</p>
+    <p>Dúvidas: <a href="mailto:suportemundomatemagico@gmail.com">suportemundomatemagico@gmail.com</a> — atendimento 24 horas, todos os dias.</p>
+    <div class="links">
+      <a href="index.html">Voltar ao site</a>
+      <a href="#">Política de Privacidade</a>
+      <a href="#">Termos de Uso</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== UPGRADE + DOWNSELL ====================
+     Abre quando o cliente do Plano Básico clica para pagar.
+     Etapa 1: Premium Completo. Se recusar, etapa 2: Premium Essencial.
+     Todos os valores são preenchidos por js/checkout.js (PLANOS e FUNIL). -->
+<div class="funil" id="funil" hidden>
+  <div class="funil-fundo" aria-hidden="true"></div>
+  <div class="funil-caixa" id="funil-caixa" role="dialog" aria-modal="true" aria-labelledby="funil-t1">
+
+    <!-- ---------- ETAPA 1: PREMIUM COMPLETO ---------- -->
+    <section class="funil-etapa" id="funil-upgrade">
+      <span class="funil-eyebrow">✋ Antes de ir para o pagamento</span>
+      <h2 class="funil-titulo" id="funil-t1" tabindex="-1">Seu material já está garantido. Quer que sua criança também jogue as aventuras no celular?</h2>
+      <p class="funil-sub">O Básico já traz tudo para imprimir. O <strong>Premium Completo</strong> soma o aplicativo e dois materiais que deixam a sua rotina mais leve.</p>
+
+      <div class="funil-ja">
+        <span class="funil-ok" aria-hidden="true">✓</span>
+        <span><b>Você já garantiu:</b> Plano Básico · +350 aventuras em PDF</span>
+      </div>
+
+      <div class="funil-mais" aria-hidden="true">+</div>
+
+      <div class="funil-card">
+        <span class="funil-tag">🔥 Premium Completo adiciona</span>
+        <ul class="funil-lista">
+          <li class="principal">
+            <img data-fn-img="app" alt="" width="48" height="60">
+            <span class="txt"><b id="fn-app-nome"></b><small id="fn-app-det"></small></span>
+            <span class="val" id="fn-app-valor"></span>
+          </li>
+          <li>
+            <img data-fn-img="bonus1" alt="" width="48" height="60">
+            <span class="txt"><em class="b">Bônus 1</em><b id="fn-bonus1-nome"></b><small id="fn-bonus1-det"></small></span>
+            <span class="val" id="fn-bonus1-valor"></span>
+          </li>
+          <li>
+            <img data-fn-img="bonus2" alt="" width="48" height="60">
+            <span class="txt"><em class="b">Bônus 2</em><b id="fn-bonus2-nome"></b><small id="fn-bonus2-det"></small></span>
+            <span class="val" id="fn-bonus2-valor"></span>
+          </li>
+        </ul>
+        <p class="funil-soma">Separados, os 3 somam <s id="fn-soma"></s></p>
+      </div>
+
+      <div class="funil-preco">
+        <span class="de">Seu pedido passa de <s id="fn-basico"></s> para</span>
+        <strong class="por" id="fn-completo"></strong>
+        <span class="total-info">Valor total do pedido — o Básico sai e não é cobrado junto</span>
+        <span class="selo-dif">Apenas <span id="fn-dif-completo"></span> a mais que o Básico</span>
+      </div>
+
+      <button type="button" class="funil-cta" id="aceitar-completo">QUERO DESBLOQUEAR O PREMIUM COMPLETO</button>
+      <!-- Botão vermelho: a pessoa declara que não quer pagar o valor cheio → abre o downsell -->
+      <button type="button" class="funil-cta-nao" id="recusar-completo">NÃO QUERO PAGAR O VALOR CHEIO DE <span id="fn-completo-3"></span></button>
+      <p class="funil-nota">🔒 Pagamento único, sem mensalidade · Garantia de 7 dias</p>
+    </section>
+
+    <!-- ---------- ETAPA 2: PREMIUM ESSENCIAL (downsell) ---------- -->
+    <section class="funil-etapa" id="funil-downsell" hidden>
+      <span class="funil-eyebrow calmo">Tudo bem.</span>
+      <h2 class="funil-titulo" id="funil-t2" tabindex="-1">Vamos tirar os extras e deixar só o aplicativo.</h2>
+      <p class="funil-sub">Talvez você não precise dos dois bônus agora. Então retiramos os dois do pacote — e o preço caiu junto.</p>
+
+      <div class="funil-card reducao" id="funil-reducao">
+        <div class="funil-nomes">
+          <s class="antes">Premium Completo</s>
+          <span class="seta" aria-hidden="true">→</span>
+          <span class="depois">Premium Essencial</span>
+        </div>
+        <ul class="funil-lista compacta">
+          <li class="mantido">
+            <span class="ic" aria-hidden="true">✓</span>
+            <span class="txt"><b>+350 aventuras em PDF</b></span>
+            <span class="st">mantido</span>
+          </li>
+          <li class="mantido">
+            <span class="ic" aria-hidden="true">✓</span>
+            <span class="txt"><b>Aplicativo Bloxmática</b></span>
+            <span class="st">mantido</span>
+          </li>
+        </ul>
+
+        <!-- Bônus do Premium: só o acesso vitalício sem mensalidade fica; os outros dois saem -->
+        <p class="funil-grupo">Bônus do Premium</p>
+        <ul class="funil-lista compacta bonus-lista">
+          <li class="mantido bonus-fica">
+            <span class="ic" aria-hidden="true">✓</span>
+            <span class="txt"><em class="unico">🎁 Único bônus mantido</em><b>Acesso vitalício, sem mensalidades</b><small>Use o app para sempre, sem cobranças recorrentes</small></span>
+            <span class="st">mantido</span>
+          </li>
+          <li class="removido">
+            <span class="ic" aria-hidden="true">✕</span>
+            <span class="txt"><b><span class="risco" data-fn-nome="bonus1"></span></b><small>Bônus 1</small></span>
+            <span class="st">retirado</span>
+          </li>
+          <li class="removido">
+            <span class="ic" aria-hidden="true">✕</span>
+            <span class="txt"><b><span class="risco" data-fn-nome="bonus2"></span></b><small>Bônus 2</small></span>
+            <span class="st">retirado</span>
+          </li>
+        </ul>
+        <p class="funil-porque">2 itens a menos → preço menor</p>
+      </div>
+
+      <div class="funil-preco">
+        <span class="de">De <s id="fn-completo-2"></s> por</span>
+        <strong class="por" id="fn-essencial"></strong>
+        <span class="total-info">Valor total do pedido — o Básico sai e não é cobrado junto</span>
+        <span class="selo-dif">Apenas <span id="fn-dif-essencial"></span> a mais que o Básico (<span id="fn-basico-2"></span>)</span>
+      </div>
+
+      <button type="button" class="funil-cta" id="aceitar-essencial">QUERO O PREMIUM ESSENCIAL</button>
+      <button type="button" class="funil-cta-nao" id="recusar-essencial">NÃO, QUERO CONTINUAR SOMENTE COM O BÁSICO</button>
+      <p class="funil-nota">📱 O mesmo aplicativo do Premium Completo · pagamento único · garantia de 7 dias</p>
+    </section>
+
+  </div>
+</div>
+
+<script src="js/checkout.js"></script>
+<script>
+  // Seta para recolher/abrir os order bumps. Sempre começa ABERTO (regra) — nada é salvo.
+  (function () {
+    var bloco = document.getElementById('bumps-bloco');
+    var btn = document.getElementById('bumps-toggle');
+    var conteudo = document.getElementById('bumps-conteudo');
+    function abrir(sim) {
+      bloco.classList.toggle('recolhido', !sim);
+      conteudo.hidden = !sim;
+      btn.setAttribute('aria-expanded', sim ? 'true' : 'false');
+      btn.setAttribute('aria-label', sim ? 'Recolher ofertas' : 'Mostrar ofertas');
+    }
+    abrir(true);
+    btn.addEventListener('click', function () { abrir(conteudo.hidden); });
+    // Voltando pelo botão "voltar" do navegador também reabre
+    window.addEventListener('pageshow', function () { abrir(true); });
+  })();
+</script>
+<script>
+  // Cronômetro da oferta: igual ao da página de vendas — conta até a meia-noite
+  // no fuso horário de quem visita, então o número continua de onde a pessoa viu na página.
+  (function () {
+    var el = document.getElementById('timer');
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+      var now = new Date();
+      var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      var s = Math.max(0, Math.floor((midnight - now) / 1000));
+      el.textContent = pad(Math.floor(s / 3600)) + ' : ' + pad(Math.floor(s % 3600 / 60)) + ' : ' + pad(s % 60);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+</body>
+</html>

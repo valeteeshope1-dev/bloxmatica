@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amostra Grátis | Bloxmática</title>
+  <meta name="description" content="Veja 5 missões reais do Bloxmática e teste com sua criança antes de comprar.">
+  <meta name="theme-color" content="#2f9be0">
+  <link rel="preload" as="image" href="img/amostra/pagina-1.webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/amostra.css">
+</head>
+<body class="sample-page">
+
+  <!-- ===================== TOPO ===================== -->
+  <header class="sample-top">
+    <a class="sample-back-link" href="index.html" data-back>← Voltar</a>
+    <span class="sample-top-title">🎁 Amostra grátis • Bloxmática</span>
+  </header>
+
+  <main>
+
+    <!-- ===================== INTRO ===================== -->
+    <section class="sample-intro">
+      <div class="wrap narrow">
+        <span class="sample-badge">AMOSTRA GRÁTIS</span>
+        <h1>TESTE 5 MISSÕES DO BLOXMÁTICA COM SUA CRIANÇA</h1>
+        <p>Páginas reais do material: adição, subtração, multiplicação, divisão e um desafio final. Veja abaixo ou baixe o PDF para imprimir.</p>
+        <a class="sample-btn" href="downloads/amostra-gratis-bloxmatica.pdf" download>⬇️ BAIXAR PDF PARA IMPRIMIR</a>
+      </div>
+    </section>
+
+    <!-- ===================== PÁGINAS DA AMOSTRA ===================== -->
+    <section class="sample-pages">
+      <div class="wrap">
+        <figure class="sample-page-card"><img src="img/amostra/pagina-1.webp" alt="Capa da amostra grátis Bloxmática" width="1190" height="1684" fetchpriority="high"></figure>
+        <figure class="sample-page-card"><img src="img/amostra/pagina-2.webp" alt="Missão 1: Conte e some (1º ano, adição)" width="1190" height="1684" loading="lazy"></figure>
+        <figure class="sample-page-card"><img src="img/amostra/pagina-3.webp" alt="Missão 2: Missões da subtração (2º e 3º ano)" width="1190" height="1684" loading="lazy"></figure>
+        <figure class="sample-page-card"><img src="img/amostra/pagina-4.webp" alt="Missão 3: Torres iguais (multiplicação, 2º ao 5º ano)" width="1190" height="1684" loading="lazy"></figure>
+        <figure class="sample-page-card"><img src="img/amostra/pagina-5.webp" alt="Missão 4: Divida o tesouro (divisão, 3º ao 5º ano)" width="1190" height="1684" loading="lazy"></figure>
+        <figure class="sample-page-card"><img src="img/amostra/pagina-6.webp" alt="Missão 5: Desafio Bloxmático (4º e 5º ano)" width="1190" height="1684" loading="lazy"></figure>
+
+        <!-- Gabarito bloqueado: o botão desenhado na página vira link de verdade -->
+        <figure class="sample-page-card">
+          <img src="img/amostra/pagina-7.webp" alt="Gabarito da amostra bloqueado: exclusivo para quem adquire o material completo" width="1190" height="1684" loading="lazy">
+          <a class="page-hotspot" href="index.html#planos" style="left:27.5%;top:82.7%;width:45%;height:6.5%" aria-label="Adquirir agora"></a>
+        </figure>
+
+        <!-- Fim da amostra -->
+        <figure class="sample-page-card">
+          <img src="img/amostra/pagina-8.webp" alt="Fim da amostra grátis: o progresso parou aqui" width="1190" height="1684" loading="lazy">
+          <a class="page-hotspot" href="index.html#planos" style="left:58.8%;top:85.2%;width:32.4%;height:6.6%" aria-label="Adquirir agora"></a>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== BOTÕES FINAIS ===================== -->
+    <section class="sample-final">
+      <div class="wrap narrow">
+        <h2>GOSTOU? LIBERE O MATERIAL COMPLETO</h2>
+        <p>Continue o Nível 1, suba para os Níveis 2 e 3, jogue no app e acesse o gabarito de todas as missões.</p>
+        <div class="sample-actions">
+          <a class="cta" href="index.html#planos">ADQUIRIR AGORA</a>
+          <a class="back-btn" href="index.html" data-back>← VOLTAR À PÁGINA</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><strong>Copyright © 2026 | Bloxmática. Todos os direitos reservados.</strong></p>
+      <p>Material educacional independente. Este site não é afiliado ou endossado pelo Facebook™, Instagram™, Google™ ou Roblox Corporation.</p>
+    </div>
+  </footer>
+
+  <script>
+    // "Voltar": se veio da página de vendas, volta para o mesmo ponto onde estava
+    document.querySelectorAll('[data-back]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        try {
+          if (document.referrer && new URL(document.referrer).origin === window.location.origin && history.length > 1) {
+            event.preventDefault();
+            history.back();
+          }
+        } catch (e) {}
+      });
+    });
+  </script>
+</body>
+</html>
