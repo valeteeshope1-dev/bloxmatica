@@ -314,8 +314,23 @@ var BUMPS = [
 
       input.addEventListener('blur', function () {
         marcar(campo, true);    /* ao sair do campo, aponta o que esta errado */
+        revalidar();
       });
+
+      /* autopreenchimento do navegador às vezes só dispara "change" */
+      input.addEventListener('change', revalidar);
     });
+  }
+
+  /* Relê os campos como estão na tela. Necessário porque o navegador pode
+     preencher sozinho (autopreenchimento, ou ao recarregar a página) sem
+     avisar a página — aí o botão ficava cinza com tudo preenchido. */
+  function revalidar() {
+    CAMPOS.forEach(function (c) {
+      var input = el(c.id);
+      if (c.mascara && input.value) { input.value = c.mascara(input.value); }
+    });
+    if (planoAtual) { atualizarLink(); }
   }
 
   /* ================== link final para o checkout externo ================= */
@@ -723,12 +738,20 @@ var BUMPS = [
     if (FUNIL.ativo && (ver === 'upgrade' || ver === 'downsell')) { abrirFunil(ver); }
 
     /* Atalho: desce ate o botao de compra, ou cobra o que falta antes. */
+    /* confere de novo depois que o navegador termina de preencher os campos */
+    setTimeout(revalidar, 300);
+    setTimeout(revalidar, 1200);
+    window.addEventListener('load', revalidar);
+    window.addEventListener('pageshow', revalidar);
+
     el('descer').addEventListener('click', function () {
+      revalidar();
       if (cobrarPendencias()) { return; }
       rolarPara(el('cta'), 'center');
     });
 
     el("cta").addEventListener("click", function (ev) {
+      revalidar();   /* garante que o botão reflete o que está na tela agora */
       /* Cliente do Básico com os dados completos: antes de pagar, oferece o
          upgrade (e, se recusar, o downsell). Só uma vez por visita. */
       if (FUNIL.ativo && planoAtual === 'basico' && !funil.decidido && !primeiroPendente()) {
