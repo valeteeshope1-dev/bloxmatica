@@ -401,19 +401,22 @@ footer .links{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px}
 /* =================== UPGRADE + DOWNSELL (modal) =================== */
 body.funil-aberto{overflow:hidden}
 .funil[hidden]{display:none}
-.funil{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center}
-.funil-fundo{position:absolute;inset:0;background:rgba(20,24,52,.62);animation:fn-fade .2s ease}
+/* Card flutuante no centro, com a página do checkout aparecendo em volta */
+.funil{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:28px 14px}
+.funil-fundo{position:absolute;inset:0;background:rgba(20,24,52,.38);animation:fn-fade .2s ease}
 .funil-caixa{
-  position:relative;width:100%;max-height:94vh;overflow-y:auto;overscroll-behavior:contain;
-  background:#fff;border-radius:20px 20px 0 0;padding:22px 18px 18px;
-  box-shadow:0 -10px 40px rgba(0,0,0,.25);animation:fn-sobe .28s cubic-bezier(.2,.8,.2,1);
+  position:relative;width:100%;max-width:440px;max-height:calc(100vh - 56px);max-height:calc(100dvh - 56px);
+  overflow-y:auto;overscroll-behavior:contain;
+  background:#fff;border-radius:20px;padding:20px 16px 16px;
+  box-shadow:0 24px 60px rgba(10,20,50,.35),0 0 0 1px rgba(255,255,255,.6);
+  animation:fn-sobe .26s cubic-bezier(.2,.8,.2,1);
 }
 @media (min-width:560px){
-  .funil{align-items:center;padding:20px}
-  .funil-caixa{max-width:460px;border-radius:20px;padding:26px 26px 20px}
+  .funil{padding:32px 20px}
+  .funil-caixa{max-width:460px;padding:24px 24px 18px}
 }
 @keyframes fn-fade{from{opacity:0}to{opacity:1}}
-@keyframes fn-sobe{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes fn-sobe{from{transform:translateY(16px) scale(.96);opacity:0}to{transform:none;opacity:1}}
 .funil-etapa[hidden]{display:none}
 
 .funil-eyebrow{
@@ -534,3 +537,35 @@ body.funil-aberto{overflow:hidden}
   .funil-preco .por{font-size:30px}
   .funil-cta{font-size:14.5px}
 }
+
+/* ---------- card compacto: cabe inteiro na tela, sem rolar ---------- */
+.funil-caixa{scrollbar-width:thin;scrollbar-color:#cfd8e3 transparent}
+.funil-caixa::-webkit-scrollbar{width:6px}
+.funil-caixa::-webkit-scrollbar-thumb{background:#cfd8e3;border-radius:6px}
+.funil-eyebrow{margin-bottom:8px;padding:4px 11px;font-size:12px}
+.funil-titulo{font-size:18.5px;line-height:1.22;margin-bottom:6px}
+.funil-sub{font-size:13px;line-height:1.45;margin-bottom:12px}
+.funil-ja{padding:8px 12px;font-size:12.5px;border-radius:10px}
+.funil-ok{width:20px;height:20px;font-size:12px}
+.funil-mais{width:26px;height:26px;font-size:17px;margin:-5px auto}
+.funil-card{padding:12px 12px 10px}
+.funil-tag{margin-bottom:8px;font-size:11px}
+.funil-lista{gap:8px}
+.funil-lista img{width:38px;height:48px;border-radius:6px}
+.funil-lista .txt b{font-size:13.5px}
+.funil-lista .txt small{font-size:11.5px}
+.funil-soma{margin-top:8px;padding-top:8px;font-size:12px}
+.funil-nomes{margin-bottom:8px;font-size:12px}
+.funil-lista.compacta{gap:6px}
+.funil-lista.compacta li{padding:6px 10px}
+.funil-lista .ic{width:20px;height:20px;font-size:11px}
+.funil-grupo{margin:10px 0 6px}
+.funil-porque{margin-top:8px;font-size:13px}
+.funil-preco{margin:12px 0 10px}
+.funil-preco .de{font-size:12.5px}
+.funil-preco .por{font-size:30px}
+.funil-preco .total-info{font-size:11.5px}
+.funil-preco .selo-dif{margin-top:6px;font-size:12px;padding:3px 11px}
+.funil-cta{min-height:52px;padding:14px 12px;font-size:15px}
+.funil-cta-nao{min-height:46px;margin-top:10px;padding:11px 12px;font-size:13px}
+.funil-nota{margin:8px 0 0;font-size:11.5px}
