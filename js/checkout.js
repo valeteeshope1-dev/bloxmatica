@@ -101,6 +101,11 @@ var FUNIL = {
    - de:    preço riscado (opcional), em centavos
    - ocultarNoPlano: esconde o bump quando o cliente estiver nesse plano
                      (ex.: 'premium' se o item já vem grátis no Premium) */
+/* LIGA/DESLIGA os order bumps neste checkout.
+   false = seção escondida (os bumps são oferecidos só no checkout da Cakto).
+   true  = seção volta a aparecer, com tudo como estava. */
+var BUMPS_ATIVOS = false;
+
 var BUMPS = [
   {
     id: 'tabuada7dias',
@@ -564,6 +569,7 @@ var BUMPS = [
   var bumpsMarcados = {};
 
   function bumpsVisiveis() {
+    if (!BUMPS_ATIVOS) { return []; }
     return BUMPS.filter(function (b) { return b.ocultarNoPlano !== planoAtual; });
   }
 
